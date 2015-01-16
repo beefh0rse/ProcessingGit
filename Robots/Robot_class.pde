@@ -1,10 +1,11 @@
 class Robot {
-  float wHead, x, y;
+  float wHead, x, y, easing;
+  float easing = 1
 
-
-  Robot(float headWidth) {
+  Robot(float headWidth, float easing_) {
     wHead = headWidth;
-    x = width/2;
+    x = width/2; 
+    easing = easing_;
     y = height/2;
   }
   void drawRobot() { 
@@ -14,11 +15,11 @@ class Robot {
 
     float hHead = 80;//hight of head
     float rHead= wHead / 5;//radius of head
-    fill(0, 0, 50);
+    fill(0, 0, 50, alphaLevel);
     rect(-wHead/2, -hHead, wHead, hHead);
 
     // draw eyes
-    fill(255, 0, 0);
+    fill(255, 0, 0, alphaLevel);
     ellipse(-15, -30, 15, 10);
     ellipse(15, -30, 15, 10);
 
@@ -29,7 +30,6 @@ class Robot {
   }
 
   void easeTowards(float x_, float y_) {
-    float easing = 0.05;
     x = x + easing * (x_ - x);
     y = y + easing * (y_ - y);
   }
